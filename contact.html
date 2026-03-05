@@ -1,154 +1,257 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Aide  </title>
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <style>
-        body {
-            font-family: "Arial", sans-serif;
-            background-color: #f8f8f8;
-            margin: 0;
-            padding: 0;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aide</title>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
-        .container {
-            max-width: 800px;
-            margin: 50px auto;
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
+  <style>
+    body {
+      font-family: "Arial", sans-serif;
+      background-color: #f8f8f8;
+      margin: 0;
+      padding: 0;
+    }
 
-        h2 {
-            text-align: center;
-            color: #333;
-            margin-bottom: 20px;
-        }
+    .container {
+      max-width: 800px;
+      margin: 50px auto;
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
 
-        h4 {
-            color: #666;
-            font-size: 20px;
-            margin-bottom: 10px;
-        }
+    h2 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 20px;
+    }
 
-        .cart-details {
-            background-color: #f4f4f4;
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 30px;
-        }
+    .form-group {
+      margin-bottom: 15px;
+    }
 
-        .cart-details ul {
-            list-style-type: none;
-            padding: 0;
-        }
+    input, textarea {
+      width: 100%;
+      padding: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+    }
 
-        .cart-details li {
-            margin-bottom: 10px;
-            font-size: 16px;
-            color: #333;
-        }
+    textarea {
+      height: 150px;
+      resize: none;
+    }
 
-        .form-group {
-            margin-bottom: 15px;
-        }
+    button {
+      background-color: #28a745;
+      color: white;
+      padding: 15px;
+      width: 100%;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 18px;
+      transition: background-color 0.3s ease;
+    }
 
-        input, textarea {
-            width: 100%;
-            padding: 15px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            font-size: 16px;
-        }
+    button:hover {
+      background-color: #218838;
+    }
 
-        .form-group textarea {
-            height: 150px;
-            resize: none;
-        }
+    .back-button {
+      background-color: #007bff;
+      color: white;
+      padding: 15px;
+      width: 100%;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 18px;
+      margin-top: 20px;
+      text-align: center;
+    }
 
-        button {
-            background-color: #28a745;
-            color: white;
-            padding: 15px;
-            width: 100%;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 18px;
-            transition: background-color 0.3s ease;
-        }
+    .back-button:hover {
+      background-color: #0056b3;
+    }
+  </style>
 
-        button:hover {
-            background-color: #218838;
-        }
+  <script>
+    function validateContact(event) {
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      const address = document.getElementById("address").value.trim();
+      const message = document.getElementById("message").value.trim();
 
-        .error-message {
-            color: red;
-            font-size: 14px;
-        }
+      const nameRegex = /^[a-zA-ZÀ-ÿ\s'-]+$/;
+      const phoneRegex = /^0[6-7]\d{8}$/;
 
-        .total-price {
-            font-size: 18px;
-            font-weight: bold;
-            color: #333;
-        }
+      if (!nameRegex.test(name)) {
+        alert("Veuillez entrer un nom valide.");
+        event.preventDefault();
+        return false;
+      }
 
-        .back-button {
-            background-color: #007bff;
-            color: white;
-            padding: 15px;
-            width: 100%;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 18px;
-            margin-top: 20px;
-            text-align: center;
-        }
+      if (!email) {
+        alert("Veuillez entrer un email valide.");
+        event.preventDefault();
+        return false;
+      }
 
-        .back-button:hover {
-            background-color: #0056b3;
-        }
-    </style>
-    
+      if (!phoneRegex.test(phone)) {
+        alert("Veuillez entrer un numéro valide (06/07 + 8 chiffres).");
+        event.preventDefault();
+        return false;
+      }
+
+      if (!address) {
+        alert("Veuillez entrer une adresse valide.");
+        event.preventDefault();
+        return false;
+      }
+
+      if (!message) {
+        alert("Veuillez écrire un message.");
+        event.preventDefault();
+        return false;
+      }
+
+      return true;
+    }
+  </script>
 </head>
+
 <body>
+  <div class="container">
+    <h2>Comment on peut vous aider ?</h2>
 
-    <div class="container">
-        <h2> Comment on peut vous aider? </h2>
+    <!-- IMPORTANT : remplace TON_ID_FORM_CONTACT -->
+    <form
+      id="contactForm"
+      action="https://formspree.io/f/mwvreljd"
+      method="POST"
+    >
+      <div class="form-group">
+        <input class="w3-input" type="text" id="name" name="Nom" placeholder="Nom" required>
+      </div>
 
-        
+      <div class="form-group">
+        <input class="w3-input" type="email" id="email" name="Email" placeholder="Email" required>
+      </div>
 
-        <!-- Formulaire de Contact -->
-        <form id="contactForm" action="process_msg.php" method="post" onsubmit="submitOrder(event)">
-            <div class="form-group">
-                <input class="w3-input" type="text" id="name" placeholder="Nom" required name="name">
-                <p id="nameError" class="error-message"></p>
-            </div>
-            <div class="form-group">
-                <input class="w3-input" type="email" id="email" placeholder="Email" required name="email">
-                <p id="emailError" class="error-message"></p>
-            </div>
-            <div class="form-group">
-                <input class="w3-input" type="text" id="phone" placeholder="Téléphone (ex : 06XXXXXXXX)" required name="phone">
-                <p id="phoneError" class="error-message"></p>
-            </div>
-            <div class="form-group">
-                <input class="w3-input" type="text" id="address" placeholder="Adresse à Bordeaux" required name="address">
-                <p id="addressError" class="error-message"></p>
-            </div>
-            <div class="form-group">
-                <textarea class="w3-input" id="message" placeholder="Message" required name="message"></textarea>
-                <p id="messageError" class="error-message"></p>
-            </div>
-            <button type="submit"> envoyer mon message </button>
-        </form>
+      <div class="form-group">
+        <input
+          class="w3-input"
+          type="text"
+          id="phone"
+          name="Téléphone"
+          placeholder="Téléphone (ex : 06XXXXXXXX)"
+          required
+          pattern="^0[6-7]\d{8}$"
+          title="Le numéro doit commencer par 06 ou 07, suivi de 8 chiffres."
+        >
+      </div>
 
-        <!-- Bouton Retour -->
-        <button class="back-button" onclick="window.location.href = 'index.html'">Retour à la page principale</button>
+      <div class="form-group">
+        <input class="w3-input" type="text" id="address" name="Adresse" placeholder="Adresse" required>
+      </div>
+
+      <div class="form-group">
+        <textarea class="w3-input" id="message" name="Message" placeholder="Message" required></textarea>
+      </div>
+
+      <button type="submit">Envoyer mon message</button>
+    </form>
+    
+    <button class="back-button" onclick="window.location.href='index.html'">
+      Retour à la page principale
+    </button>
+
+    <div id="successMessage" style="display:none; margin-top:20px; padding:15px; background:#d4edda; color:#155724; border-radius:8px; text-align:center;">
+        ✅ Votre message a été envoyé avec succès ! Redirection vers l'accueil...
     </div>
+
+    
+  </div>
+  <script>
+function validateContact() {
+  const name = document.getElementById("name").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+  const address = document.getElementById("address").value.trim();
+  const message = document.getElementById("message").value.trim();
+
+  const nameRegex = /^[a-zA-ZÀ-ÿ\s'-]+$/;
+  const phoneRegex = /^0[6-7]\d{8}$/;
+
+  if (!nameRegex.test(name)) {
+    alert("Veuillez entrer un nom valide.");
+    return false;
+  }
+
+  if (!email) {
+    alert("Veuillez entrer un email valide.");
+    return false;
+  }
+
+  if (!phoneRegex.test(phone)) {
+    alert("Veuillez entrer un numéro valide (06/07 + 8 chiffres).");
+    return false;
+  }
+
+  if (!address) {
+    alert("Veuillez entrer une adresse valide.");
+    return false;
+  }
+
+  if (!message) {
+    alert("Veuillez écrire un message.");
+    return false;
+  }
+
+  return true;
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("contactForm");
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    if (!validateContact()) return;
+
+    const formData = new FormData(form);
+
+    try {
+      const res = await fetch(form.action, {
+        method: "POST",
+        body: formData,
+        headers: { "Accept": "application/json" }
+      });
+
+      if (res.ok) {
+
+        document.getElementById("successMessage").style.display = "block";
+
+        setTimeout(() => {
+          window.location.href = "index.html";
+        }, 2000);
+
+      } else {
+        alert("Erreur : le message n'a pas pu être envoyé.");
+      }
+
+    } catch (err) {
+      console.error(err);
+      alert("Erreur réseau.");
+    }
+  });
+});
+</script>
 </body>
-</html>  
+</html>
